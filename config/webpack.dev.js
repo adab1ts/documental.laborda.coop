@@ -63,7 +63,7 @@ module.exports = {
     }),
 
     // See: https://github.com/webpack/extract-text-webpack-plugin
-    new ExtractTextPlugin(`${PATHS.rel.styles}/[name].bundle.css`)
+    new ExtractTextPlugin(`${PATHS.rel.styles}/[name].bundle.css`),
 
     // See: https://gist.github.com/sokra/27b24881210b56bbaff7
     new LoaderOptionsPlugin({
@@ -79,7 +79,7 @@ module.exports = {
         ]
       }
     })
-  ],
+  ]
 
   /*
    * Webpack Development Server configuration

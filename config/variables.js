@@ -11,7 +11,10 @@ const PATHS = {
     images: helpers.root('src', 'assets', 'images'),
     scripts: helpers.root('src', 'assets', 'scripts'),
     styles: helpers.root('src', 'assets', 'styles'),
-    vendor: helpers.root('vendor')
+    vendor: helpers.root('vendor'),
+    mods: {
+      semantic: helpers.root('node_modules', 'semantic-ui-less')
+    }
   },
   rel: {
     fonts: 'assets/fonts',

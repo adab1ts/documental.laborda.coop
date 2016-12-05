@@ -1,8 +1,9 @@
 {
-  "name": "documental.laborda.coop",
+  "name": "laborda.coop",
   "version": "1.0.0",
   "description": "Web documental de La Borda",
   "keywords": [
+    "semantic-ui",
     "es2015",
     "babel",
     "webpack"
@@ -16,10 +17,11 @@
   },
   "private": true,
   "scripts": {
+    "postinstall": "node config/semantic-fix.js",
     "clean": "rimraf dist",
     "clean:all": "rimraf dist node_modules",
     "lint:scripts": "snazzy --verbose",
-    "lint:styles": "stylelint 'src/**/*.css' -q",
+    "lint:styles": "stylelint 'src/**/*.css' 'vendor/**/*.less' 'vendor/**/*.variables' 'vendor/**/*.overrides' -q",
     "lint": "run-p lint:*",
     "favicon": "cpy favicon.ico dist",
     "prebuild:dev": "run-s clean lint favicon",
@@ -33,6 +35,8 @@
     "start": "npm run dev"
   },
   "dependencies": {
+    "jquery": "^3.1.1",
+    "semantic-ui-less": "^2.2.4"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.1",

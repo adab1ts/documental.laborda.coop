@@ -7,6 +7,7 @@ const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+const ProvidePlugin = require('webpack/lib/ProvidePlugin')
 
 /*
  * Webpack common configuration
@@ -59,24 +60,24 @@ module.exports = {
       {
         test: /\.js$/,
         include: PATHS.abs.src,
-        loader: 'babel'
+        loader: 'babel-loader'
       },
       // See: https://github.com/webpack/css-loader
       // See: https://github.com/postcss/postcss-loader
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
-          loader: ['css', 'postcss'],
-          fallbackLoader: 'style'
+          loader: ['css-loader', 'postcss-loader'],
+          fallbackLoader: 'style-loader'
         })
       },
       // See: https://github.com/webpack/less-loader
       {
         test: /\.less$/,
-        include: [PATHS.abs.src, PATHS.abs.vendor],
+        include: [PATHS.abs.src, PATHS.abs.vendor, PATHS.abs.mods.semantic],
         loader: ExtractTextPlugin.extract({
-          loader: ['css', 'postcss', 'less'],
-          fallbackLoader: 'style'
+          loader: ['css-loader', 'postcss-loader', 'less-loader'],
+          fallbackLoader: 'style-loader'
         })
       },
       // See: https://github.com/webpack/html-loader
@@ -84,7 +85,7 @@ module.exports = {
       {
         test: /\.html$/,
         include: PATHS.abs.src,
-        loader: 'html'
+        loader: 'html-loader'
       },
       // See: http://survivejs.com/webpack/loading-assets/loading-images/
       // See: https://github.com/webpack/file-loader
@@ -94,28 +95,28 @@ module.exports = {
       // See: https://developers.google.com/speed/webp/
       {
         test: /\.(png|jpe?g|gif)$/i,
-        include: [PATHS.abs.src, PATHS.abs.vendor],
+        include: [PATHS.abs.src, PATHS.abs.vendor, PATHS.abs.mods.semantic],
         loaders: [
-          { loader: 'url', query: { limit: 10 * 1024, name: `${PATHS.rel.images}/[name].[hash:21].[ext]` } },
-          { loader: 'image-webpack', query: { bypassOnDebug: true, optimizationLevel: 7, progressive: true, interlaced: true } }
+          { loader: 'url-loader', query: { limit: 10 * 1024, name: `${PATHS.rel.images}/[name].[hash:21].[ext]` } },
+          { loader: 'image-webpack-loader', query: { bypassOnDebug: true, optimizationLevel: 7, progressive: true, interlaced: true } }
         ]
       },
       {
         test: /\.(otf|woff|ttf|svg)$/,
-        include: [PATHS.abs.src, PATHS.abs.vendor],
-        loader: 'url',
+        include: [PATHS.abs.src, PATHS.abs.vendor, PATHS.abs.mods.semantic],
+        loader: 'url-loader',
         query: { limit: 10 * 1024, name: `${PATHS.rel.fonts}/[name].[hash:21].[ext]` }
       },
       {
         test: /\.woff2$/,
-        include: [PATHS.abs.src, PATHS.abs.vendor],
-        loader: 'url',
+        include: [PATHS.abs.src, PATHS.abs.vendor, PATHS.abs.mods.semantic],
+        loader: 'url-loader',
         query: { limit: 10 * 1024, mimetype: 'font/woff2', name: `${PATHS.rel.fonts}/[name].[hash:21].[ext]` }
       },
       {
         test: /\.eot$/,
-        include: [PATHS.abs.src, PATHS.abs.vendor],
-        loader: 'file',
+        include: [PATHS.abs.src, PATHS.abs.vendor, PATHS.abs.mods.semantic],
+        loader: 'file-loader',
         query: { name: `${PATHS.rel.fonts}/[name].[hash:21].[ext]` }
       }
     ]
@@ -143,5 +144,10 @@ module.exports = {
 
     // See: https://github.com/clessg/progress-bar-webpack-plugin
     new ProgressBarPlugin(),
+
+    // See: https://webpack.github.io/docs/list-of-plugins.html#provideplugin
+    new ProvidePlugin({
+      jQuery: 'jquery'
+    })
   ]
 }
