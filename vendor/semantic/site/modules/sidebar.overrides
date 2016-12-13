@@ -1,0 +1,28 @@
+/* stylelint-disable at-rule-name-case */
+/* stylelint-disable at-rule-name-space-after */
+/* stylelint-disable at-rule-empty-line-before */
+/* stylelint-disable comment-empty-line-before */
+/* stylelint-disable comment-whitespace-inside */
+
+/*******************************
+         Site Overrides
+*******************************/
+
+/*******************************
+            Sidebar
+*******************************/
+
+.ui.sidebar {
+  padding: @relative10px @relative5px @relative10px @relative12px;
+  background: @lightGrey;
+}
+
+/*--------------
+     Page
+---------------*/
+
+.pushable > .pusher {
+  height: 100%;
+  max-height: 100%;
+  overflow: auto;
+}

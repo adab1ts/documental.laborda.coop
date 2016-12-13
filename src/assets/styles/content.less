@@ -1,17 +1,24 @@
-#notice {
-  margin-top: 20px;
-}
-#content {
-  margin-top: 50px;
-  margin-bottom: 20px;
+/*-------------------
+      La Borda
+--------------------*/
+
+.a1.outter.grid > .column:first-child {
+  width: 110vmin;
+  height: 100vmin;
+  background-color: @lightYellow;
 }
 
-@media only screen and (min-width: 768px) {
-  #notice {
-    margin-top: 50px;
-  }
-  #content {
-    margin-top: 100px;
-    margin-bottom: 0;
+/*-----------------------------
+      Project Description
+-----------------------------*/
+
+.a1.outter.grid > .column:last-child {
+  width: 100%;
+}
+
+@media only screen and (orientation: landscape) {
+  .a1.outter.grid > .column:last-child {
+    width: calc(100% - 110vmin);
+    /* min-width: 50em; */
   }
 }
