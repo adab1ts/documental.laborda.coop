@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "jquery": "^3.1.1",
+    "open-color": "1.4.0",
     "semantic-ui-less": "^2.2.4"
   },
   "devDependencies": {

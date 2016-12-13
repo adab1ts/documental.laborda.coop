@@ -1,0 +1,72 @@
+/* stylelint-disable at-rule-name-case */
+/* stylelint-disable at-rule-name-space-after */
+/* stylelint-disable at-rule-empty-line-before */
+/* stylelint-disable comment-empty-line-before */
+/* stylelint-disable comment-whitespace-inside */
+
+@import "~open-color/open-color";
+
+/*******************************
+     User Global Variables
+*******************************/
+
+/*******************************
+         Site Settings
+*******************************/
+
+/*-------------------
+       Fonts
+--------------------*/
+
+@headerFont        : 'Titillium Web', sans-serif;
+@pageFont          : 'Lato', sans-serif;
+
+@googleSubset      : 'latin';
+@googleFontRequest : 'Lato:300,400,700|Titillium+Web:300,400,700&subset=@{googleSubset}';
+
+/*-------------------
+    Brand Colors
+--------------------*/
+
+@primaryColor     : @orange;
+@secondaryColor   : @black;
+
+/*-------------------
+        Page
+--------------------*/
+
+@pageBackground   : @oc-yellow-0;
+@textColor        : @black;
+
+/*-------------------
+       Links
+--------------------*/
+
+@linkColor        : @brown;
+@linkHoverColor   : @darkBrown;
+
+/*-------------------
+      Site Colors
+--------------------*/
+
+/*---  Colors  ---*/
+@red              : @oc-red-7;
+@orange           : #E86E1C;
+@green            : @oc-lime-7;
+@blue             : @oc-cyan-7;
+@pink             : #E03997;
+@brown            : #903713;
+@grey             : @oc-gray-5;
+@black            : @oc-gray-9;
+
+/*---  Light Colors  ---*/
+@lightOrange      : @oc-orange-4;
+@lightGreen       : @oc-lime-1;
+@lightBrown       : #a67440;
+@lightGrey        : @oc-gray-3;
+@lightBlack       : @oc-gray-8;
+
+/*--- Dark Colors ---*/
+@darkOrange       : darken(@oc-orange-4, 20);
+@darkGreen        : darken(@oc-lime-1, 20);
+@darkBrown        : darken(@brown, 20);

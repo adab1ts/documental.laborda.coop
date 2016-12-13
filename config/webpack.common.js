@@ -74,7 +74,7 @@ module.exports = {
       // See: https://github.com/webpack/less-loader
       {
         test: /\.less$/,
-        include: [PATHS.abs.src, PATHS.abs.vendor, PATHS.abs.mods.semantic],
+        include: [PATHS.abs.src, PATHS.abs.vendor, PATHS.abs.mods.opencolor, PATHS.abs.mods.semantic],
         loader: ExtractTextPlugin.extract({
           loader: ['css-loader', 'postcss-loader', 'less-loader'],
           fallbackLoader: 'style-loader'

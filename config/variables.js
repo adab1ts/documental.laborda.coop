@@ -13,6 +13,7 @@ const PATHS = {
     styles: helpers.root('src', 'assets', 'styles'),
     vendor: helpers.root('vendor'),
     mods: {
+      opencolor: helpers.root('node_modules', 'open-color'),
       semantic: helpers.root('node_modules', 'semantic-ui-less')
     }
   },
