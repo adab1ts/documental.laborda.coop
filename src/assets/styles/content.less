@@ -6,6 +6,57 @@
   width: 110vmin;
   height: 100vmin;
   background-color: @lightYellow;
+  background-image: url("../images/borda-background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.a1.inner.grid > .row {
+  padding: 0;
+}
+
+.a1.inner.grid {
+
+  .a1.cell {
+    padding: 0;
+    height: ~"calc(98vmin / 8)";
+  }
+
+  .a1.floor.cell,
+  .a1.wall.cell,
+  .a1.roof.cell {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+  }
+
+  .a1.floor.cell {
+    background-color: rgba(16, 152, 173, 0.5); /* @oc-cyan-7 */
+
+    &.plus {
+      background-image: url("../images/plus_oc-gray-0-v1.png");
+      &:hover {
+        background-color: rgba(16, 152, 173, 0.7); /* @oc-cyan-7 */
+      }
+    }
+
+    &.v1 {
+      background-image: url("../images/01-600x600.png");
+      &:hover {
+        background-image: url("../images/video01-600x600.jpg");
+      }
+    }
+
+    &.v2 {
+      background-image: url("../images/02-600x600.png");
+      &:hover {
+        background-image: url("../images/video02-600x600.jpg");
+      }
+    }
+  }
+
 }
 
 /*-----------------------------
@@ -18,7 +69,7 @@
 
 @media only screen and (orientation: landscape) {
   .a1.outter.grid > .column:last-child {
-    width: calc(100% - 110vmin);
+    width: ~"calc(100% - 110vmin)";
     /* min-width: 50em; */
   }
 }

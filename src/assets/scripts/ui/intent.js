@@ -11,5 +11,6 @@ export const intent = {
       })
       .sidebar('attach events', '.pusher .content.icon')
       .sidebar('attach events', '.ui.sidebar .remove.icon')
+      .sidebar('attach events', '.a1.plus.cell')
   }
 }
