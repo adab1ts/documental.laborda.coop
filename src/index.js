@@ -1,5 +1,2 @@
-import {run} from 'scripts/app'
-
-import 'styles/styles.css'
-
-run()
+import 'scripts/site'
+import 'styles/site.less'
