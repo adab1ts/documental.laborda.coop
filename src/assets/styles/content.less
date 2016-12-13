@@ -65,6 +65,18 @@
 
 .a1.outter.grid > .column:last-child {
   width: 100%;
+
+  & footer {
+    a {
+      color: @linkHoverColor;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: @linkColor;
+      }
+    }
+  }
 }
 
 @media only screen and (orientation: landscape) {
