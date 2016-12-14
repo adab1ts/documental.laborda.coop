@@ -86,7 +86,6 @@ module.exports = {
       options: {
         postcss: [
           require('autoprefixer')({ browsers: ['defaults', 'ie 9'] }),
-          require('css-mqpacker'),
           require('postcss-discard-comments')({removeAll: true})
         ]
       }
