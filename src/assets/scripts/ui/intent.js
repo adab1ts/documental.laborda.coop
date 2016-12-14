@@ -4,6 +4,7 @@ export const intent = {
   setup () {
     const $sidebar = $('.ui.sidebar')
 
+    const $cookiesModal = $('.a1.cookies.modal')
     const $v1Modal = $('.a1.v1.modal')
     const $e1Modal = $('.a1.e1.modal')
     const $e2Modal = $('.a1.e2.modal')
@@ -22,6 +23,12 @@ export const intent = {
       .sidebar('attach events', '.pusher .content.icon')
       .sidebar('attach events', '.ui.sidebar .remove.icon')
       .sidebar('attach events', '.a1.plus.cell')
+
+    $cookiesModal
+      .modal({
+        transition: 'fade down'
+      })
+      .modal('attach events', '.a1.cookies.item', 'show')
 
     $v1Modal
       .modal({
