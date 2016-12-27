@@ -33,8 +33,8 @@ module.exports = {
     path: PATHS.abs.dist,
     // See: http://webpack.github.io/docs/configuration.html#output-filename
     filename: `${PATHS.rel.scripts}/[name].bundle.js`,
-    // See: http://webpack.github.io/docs/configuration.html#output-sourcemapfilename
-    sourceMapFilename: `${PATHS.rel.scripts}/[name].map`,
+    // See: https://webpack.js.org/configuration/output/#output-sourcemapfilename
+    sourceMapFilename: '[file].map',
     // See: http://webpack.github.io/docs/configuration.html#output-chunkfilename
     chunkFilename: `${PATHS.rel.scripts}/[id].chunk.js`,
     // See: http://webpack.github.io/docs/configuration.html#output-publicpath
@@ -63,10 +63,14 @@ module.exports = {
     }),
 
     // See: https://github.com/webpack/extract-text-webpack-plugin
-    new ExtractTextPlugin(`${PATHS.rel.styles}/[name].bundle.css`),
+    // See: https://webpack.js.org/guides/migrating/#extracttextwebpackplugin-breaking-change
+    new ExtractTextPlugin({
+      filename: `${PATHS.rel.styles}/[name].bundle.css`
+    }),
 
     // See: https://gist.github.com/sokra/27b24881210b56bbaff7
     new LoaderOptionsPlugin({
+      debug: true,
       options: {
         // PostCSS plugins
         // See:

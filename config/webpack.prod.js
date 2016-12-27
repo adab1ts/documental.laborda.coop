@@ -5,7 +5,6 @@ const {PATHS} = require('./variables')
  */
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin')
 const CompressionPlugin = require('compression-webpack-plugin')
-const DedupePlugin = require('webpack/lib/optimize/DedupePlugin')
 const DefinePlugin = require('webpack/lib/DefinePlugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin')
@@ -38,8 +37,8 @@ module.exports = {
     path: PATHS.abs.dist,
     // See: http://webpack.github.io/docs/configuration.html#output-filename
     filename: `${PATHS.rel.scripts}/[name].[chunkhash].js`,
-    // See: http://webpack.github.io/docs/configuration.html#output-sourcemapfilename
-    sourceMapFilename: `${PATHS.rel.scripts}/[name].[chunkhash].map`,
+    // See: https://webpack.js.org/configuration/output/#output-sourcemapfilename
+    sourceMapFilename: '[file].map',
     // See: http://webpack.github.io/docs/configuration.html#output-chunkfilename
     chunkFilename: `${PATHS.rel.scripts}/[id].[chunkhash].js`,
     // See: http://webpack.github.io/docs/configuration.html#output-publicpath
@@ -59,13 +58,8 @@ module.exports = {
 
     // See: https://github.com/webpack/compression-webpack-plugin
     new CompressionPlugin({
-      test: /\.css$|\.html$|\.js$|\.json$|\.map$/,
-      threshold: 2 * 1024
+      test: /\.css$|\.html$|\.js$|\.json$/
     }),
-
-    // See: http://webpack.github.io/docs/list-of-plugins.html#dedupeplugin
-    // See: https://github.com/webpack/docs/wiki/optimization#deduplication
-    new DedupePlugin(),
 
     // See: http://webpack.github.io/docs/list-of-plugins.html#defineplugin
     new DefinePlugin({
@@ -76,9 +70,13 @@ module.exports = {
     }),
 
     // See: https://github.com/webpack/extract-text-webpack-plugin
-    new ExtractTextPlugin(`${PATHS.rel.styles}/[name].[chunkhash].css`),
+    // See: https://webpack.js.org/guides/migrating/#extracttextwebpackplugin-breaking-change
+    new ExtractTextPlugin({
+      filename: `${PATHS.rel.styles}/[name].[chunkhash].css`
+    }),
 
     // See: https://gist.github.com/sokra/27b24881210b56bbaff7
+    // See: https://webpack.js.org/guides/migrating/#uglifyjsplugin-minimize-loaders
     new LoaderOptionsPlugin({
       minimize: true,
       debug: false,
@@ -100,6 +98,7 @@ module.exports = {
     new NoErrorsPlugin(),
 
     // See: https://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
+    // See: https://webpack.js.org/guides/migrating/#uglifyjsplugin-sourcemap
     new UglifyJsPlugin({
       mangle: { screw_ie8: true },
       compress: { screw_ie8: true, warnings: false },

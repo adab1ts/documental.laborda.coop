@@ -13,11 +13,12 @@ const ProvidePlugin = require('webpack/lib/ProvidePlugin')
  * Webpack common configuration
  * See:
  * - https://gist.github.com/sokra/27b24881210b56bbaff7
- * - http://webpack.github.io/docs/configuration.html
+ * - https://webpack.js.org/guides/migrating/
+ * - https://webpack.js.org/configuration/
  */
 module.exports = {
   /*
-   * See: http://webpack.github.io/docs/configuration.html#entry
+   * See: https://webpack.js.org/configuration/entry-context/
    */
   entry: {
     'main': './src',
@@ -25,42 +26,39 @@ module.exports = {
   },
 
   /*
-   * See: http://webpack.github.io/docs/configuration.html#resolve
+   * See:
+   * - https://webpack.js.org/concepts/module-resolution/
+   * - https://webpack.js.org/configuration/resolve/
    */
   resolve: {
-    // See: https://gist.github.com/sokra/27b24881210b56bbaff7#resolving-options
+    // See: https://webpack.js.org/configuration/resolve/#resolve-modules
     modules: ['node_modules'],
-    // See: http://webpack.github.io/docs/configuration.html#resolve-extensions
+    // See: https://webpack.js.org/configuration/resolve/#resolve-extensions
     extensions: ['.js'],
-    // See: http://webpack.github.io/docs/configuration.html#resolve-alias
+    // See: https://webpack.js.org/configuration/resolve/#resolve-alias
+    // See: https://medium.com/webpack/how-to-cope-with-broken-modules-in-webpack-4c0427fb23a#.s5hya32io
     alias: {
       fonts: PATHS.abs.fonts,
       images: PATHS.abs.images,
       scripts: PATHS.abs.scripts,
-      styles: PATHS.abs.styles
+      styles: PATHS.abs.styles,
+      jquery: 'jquery/src/jquery'
     }
   },
 
   /*
    * See:
-   * - http://webpack.github.io/docs/configuration.html#module
+   * - https://webpack.js.org/configuration/module/
    * - https://webpack.github.io/docs/list-of-loaders.html
    */
   module: {
+    // See: https://webpack.js.org/guides/migrating/#module-loaders-is-now-module-rules
     rules: [
-      {
-        enforce: 'pre',
-        test: /\.js$/,
-        loader: 'source-map-loader',
-        exclude: [
-          /node_modules/
-        ]
-      },
       // See: https://github.com/babel/babel-loader
       {
         test: /\.js$/,
         include: PATHS.abs.src,
-        loader: 'babel-loader'
+        use: ['babel-loader']
       },
       // See: https://github.com/webpack/css-loader
       // See: https://github.com/postcss/postcss-loader
@@ -85,7 +83,7 @@ module.exports = {
       {
         test: /\.html$/,
         include: PATHS.abs.src,
-        loader: 'html-loader'
+        use: ['html-loader']
       },
       // See: http://survivejs.com/webpack/loading-assets/loading-images/
       // See: https://github.com/webpack/file-loader
@@ -96,28 +94,28 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif)$/i,
         include: [PATHS.abs.src, PATHS.abs.vendor, PATHS.abs.mods.semantic],
-        loaders: [
-          { loader: 'url-loader', query: { limit: 10 * 1024, name: `${PATHS.rel.images}/[name].[hash:21].[ext]` } },
-          { loader: 'image-webpack-loader', query: { bypassOnDebug: true, optimizationLevel: 7, progressive: true, interlaced: true } }
+        use: [
+          { loader: 'url-loader', options: { limit: 10 * 1024, name: `${PATHS.rel.images}/[name].[hash:21].[ext]` } },
+          { loader: 'image-webpack-loader', options: { bypassOnDebug: true, optimizationLevel: 7, progressive: true, interlaced: true } }
         ]
       },
       {
         test: /\.(otf|woff|ttf|svg)$/,
         include: [PATHS.abs.src, PATHS.abs.vendor, PATHS.abs.mods.semantic],
-        loader: 'url-loader',
-        query: { limit: 10 * 1024, name: `${PATHS.rel.fonts}/[name].[hash:21].[ext]` }
+        use: ['url-loader'],
+        options: { limit: 10 * 1024, name: `${PATHS.rel.fonts}/[name].[hash:21].[ext]` }
       },
       {
         test: /\.woff2$/,
         include: [PATHS.abs.src, PATHS.abs.vendor, PATHS.abs.mods.semantic],
-        loader: 'url-loader',
-        query: { limit: 10 * 1024, mimetype: 'font/woff2', name: `${PATHS.rel.fonts}/[name].[hash:21].[ext]` }
+        use: ['url-loader'],
+        options: { limit: 10 * 1024, mimetype: 'font/woff2', name: `${PATHS.rel.fonts}/[name].[hash:21].[ext]` }
       },
       {
         test: /\.eot$/,
         include: [PATHS.abs.src, PATHS.abs.vendor, PATHS.abs.mods.semantic],
         loader: 'file-loader',
-        query: { name: `${PATHS.rel.fonts}/[name].[hash:21].[ext]` }
+        options: { name: `${PATHS.rel.fonts}/[name].[hash:21].[ext]` }
       }
     ]
   },
@@ -146,7 +144,9 @@ module.exports = {
     new ProgressBarPlugin(),
 
     // See: https://webpack.github.io/docs/list-of-plugins.html#provideplugin
+    // See: https://medium.com/webpack/how-to-cope-with-broken-modules-in-webpack-4c0427fb23a#.s5hya32io
     new ProvidePlugin({
+      $: 'jquery',
       jQuery: 'jquery'
     })
   ]
