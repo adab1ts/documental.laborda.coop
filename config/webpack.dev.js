@@ -47,27 +47,6 @@ module.exports = {
    * See: http://webpack.github.io/docs/list-of-plugins.html
    */
   plugins: [
-    // See: http://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
-    new CommonsChunkPlugin({
-      minChunks: Infinity,
-      name: 'common',
-      filename: `${PATHS.rel.scripts}/common.bundle.js`
-    }),
-
-    // See: http://webpack.github.io/docs/list-of-plugins.html#defineplugin
-    new DefinePlugin({
-      'process.env': {
-        'ENV': JSON.stringify(ENV),
-        'NODE_ENV': JSON.stringify(ENV)
-      }
-    }),
-
-    // See: https://github.com/webpack/extract-text-webpack-plugin
-    // See: https://webpack.js.org/guides/migrating/#extracttextwebpackplugin-breaking-change
-    new ExtractTextPlugin({
-      filename: `${PATHS.rel.styles}/[name].bundle.css`
-    }),
-
     // See: https://gist.github.com/sokra/27b24881210b56bbaff7
     new LoaderOptionsPlugin({
       debug: true,
@@ -82,6 +61,27 @@ module.exports = {
           require('autoprefixer')({ browsers: ['defaults', 'ie 9'] })
         ]
       }
+    }),
+
+    // See: http://webpack.github.io/docs/list-of-plugins.html#defineplugin
+    new DefinePlugin({
+      'process.env': {
+        'ENV': JSON.stringify(ENV),
+        'NODE_ENV': JSON.stringify(ENV)
+      }
+    }),
+
+    // See: http://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
+    new CommonsChunkPlugin({
+      minChunks: Infinity,
+      name: 'common',
+      filename: `${PATHS.rel.scripts}/common.bundle.js`
+    }),
+
+    // See: https://github.com/webpack/extract-text-webpack-plugin
+    // See: https://webpack.js.org/guides/migrating/#extracttextwebpackplugin-breaking-change
+    new ExtractTextPlugin({
+      filename: `${PATHS.rel.styles}/[name].bundle.css`
     })
   ]
 

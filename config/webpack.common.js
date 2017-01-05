@@ -72,18 +72,11 @@ module.exports = {
       // See: https://github.com/webpack/less-loader
       {
         test: /\.less$/,
-        include: [PATHS.abs.src, PATHS.abs.vendor, PATHS.abs.mods.opencolor, PATHS.abs.mods.semantic],
+        include: [PATHS.abs.styles, PATHS.abs.vendor, PATHS.abs.mods.opencolor, PATHS.abs.mods.semantic],
         loader: ExtractTextPlugin.extract({
           loader: ['css-loader', 'postcss-loader', 'less-loader'],
           fallbackLoader: 'style-loader'
         })
-      },
-      // See: https://github.com/webpack/html-loader
-      // See: https://github.com/kangax/html-minifier
-      {
-        test: /\.html$/,
-        include: PATHS.abs.src,
-        use: ['html-loader']
       },
       // See: http://survivejs.com/webpack/loading-assets/loading-images/
       // See: https://github.com/webpack/file-loader
@@ -92,30 +85,31 @@ module.exports = {
       // See: https://github.com/kavu/webp-loader
       // See: https://developers.google.com/speed/webp/
       {
-        test: /\.(png|jpe?g|gif)$/i,
-        include: [PATHS.abs.src, PATHS.abs.vendor, PATHS.abs.mods.semantic],
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        include: [PATHS.abs.images, PATHS.abs.vendor, PATHS.abs.mods.semantic],
         use: [
-          { loader: 'url-loader', options: { limit: 10 * 1024, name: `${PATHS.rel.images}/[name].[hash:21].[ext]` } },
+          { loader: 'url-loader', options: { limit: 10 * 1000, name: `${PATHS.rel.images}/[name].[hash:8].[ext]` } },
           { loader: 'image-webpack-loader', options: { bypassOnDebug: true, optimizationLevel: 7, progressive: true, interlaced: true } }
         ]
       },
       {
-        test: /\.(otf|woff|ttf|svg)$/,
-        include: [PATHS.abs.src, PATHS.abs.vendor, PATHS.abs.mods.semantic],
-        use: ['url-loader'],
-        options: { limit: 10 * 1024, name: `${PATHS.rel.fonts}/[name].[hash:21].[ext]` }
-      },
-      {
         test: /\.woff2$/,
-        include: [PATHS.abs.src, PATHS.abs.vendor, PATHS.abs.mods.semantic],
+        include: [PATHS.abs.fonts, PATHS.abs.vendor, PATHS.abs.mods.semantic],
         use: ['url-loader'],
-        options: { limit: 10 * 1024, mimetype: 'font/woff2', name: `${PATHS.rel.fonts}/[name].[hash:21].[ext]` }
+        options: { limit: 10 * 1000, mimetype: 'font/woff2', name: `${PATHS.rel.fonts}/[name].[hash:8].[ext]` }
       },
       {
-        test: /\.eot$/,
-        include: [PATHS.abs.src, PATHS.abs.vendor, PATHS.abs.mods.semantic],
+        test: /\.(eot|otf|ttf|svg|woff)$/,
+        include: [PATHS.abs.fonts, PATHS.abs.vendor, PATHS.abs.mods.semantic],
         loader: 'file-loader',
-        options: { name: `${PATHS.rel.fonts}/[name].[hash:21].[ext]` }
+        options: { name: `${PATHS.rel.fonts}/[name].[hash:8].[ext]` }
+      },
+      // See: https://github.com/webpack/html-loader
+      // See: https://github.com/kangax/html-minifier
+      {
+        test: /\.html$/,
+        include: PATHS.abs.src,
+        use: ['html-loader']
       }
     ]
   },
@@ -124,6 +118,16 @@ module.exports = {
    * See: http://webpack.github.io/docs/list-of-plugins.html
    */
   plugins: [
+    // See: https://github.com/clessg/progress-bar-webpack-plugin
+    new ProgressBarPlugin(),
+
+    // See: https://webpack.github.io/docs/list-of-plugins.html#provideplugin
+    // See: https://medium.com/webpack/how-to-cope-with-broken-modules-in-webpack-4c0427fb23a#.s5hya32io
+    new ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery'
+    }),
+
     // See: https://blog.madewithlove.be/post/webpack-your-bags/
     // See: https://egghead.io/courses/using-webpack-for-production-javascript-applications
     // See: https://github.com/webpack/docs/wiki/code-splitting
@@ -136,18 +140,7 @@ module.exports = {
 
     // See: https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      chunksSortMode: 'dependency'
-    }),
-
-    // See: https://github.com/clessg/progress-bar-webpack-plugin
-    new ProgressBarPlugin(),
-
-    // See: https://webpack.github.io/docs/list-of-plugins.html#provideplugin
-    // See: https://medium.com/webpack/how-to-cope-with-broken-modules-in-webpack-4c0427fb23a#.s5hya32io
-    new ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery'
+      template: 'src/index.html'
     })
   ]
 }
