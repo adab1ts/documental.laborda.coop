@@ -21,8 +21,7 @@
 @headerFont        : 'Titillium Web', sans-serif;
 @pageFont          : 'Lato', sans-serif;
 
-@googleSubset      : 'latin';
-@googleFontRequest : 'Lato:300,400,700|Titillium+Web:300,400,700&subset=@{googleSubset}';
+@importGoogleFonts : false;
 
 /*-------------------
     Brand Colors
@@ -70,3 +69,9 @@
 @darkOrange       : darken(@oc-orange-4, 20);
 @darkGreen        : darken(@oc-lime-1, 20);
 @darkBrown        : darken(@brown, 20);
+
+/*-------------------
+        Paths
+--------------------*/
+
+@siteFontPath : '../../../../src/assets/fonts';

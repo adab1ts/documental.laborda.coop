@@ -1,3 +1,73 @@
+/* stylelint-disable at-rule-name-case */
+/* stylelint-disable at-rule-name-space-after */
+/* stylelint-disable at-rule-empty-line-before */
+/* stylelint-disable comment-empty-line-before */
+/* stylelint-disable comment-whitespace-inside */
+
 /*******************************
          Site Overrides
 *******************************/
+
+/*-------------------
+       Fonts
+--------------------*/
+
+@font-face {
+  font-family: 'Titillium Web';
+  font-weight: 400;
+  font-style: normal;
+  src: url('@{siteFontPath}/Titillium-Web-regular/Titillium-Web-regular.eot');
+  src:
+    url('@{siteFontPath}/Titillium-Web-regular/Titillium-Web-regular.eot?#iefix') format('embedded-opentype'),
+    local('Titillium Web'),
+    local('Titillium-Web-regular'),
+    url('@{siteFontPath}/Titillium-Web-regular/Titillium-Web-regular.woff2') format('woff2'),
+    url('@{siteFontPath}/Titillium-Web-regular/Titillium-Web-regular.woff') format('woff'),
+    url('@{siteFontPath}/Titillium-Web-regular/Titillium-Web-regular.ttf') format('truetype'),
+    url('@{siteFontPath}/Titillium-Web-regular/Titillium-Web-regular.svg#TitilliumWeb') format('svg');
+}
+
+@font-face {
+  font-family: 'Titillium Web';
+  font-weight: 700;
+  font-style: normal;
+  src: url('@{siteFontPath}/Titillium-Web-700/Titillium-Web-700.eot');
+  src:
+    url('@{siteFontPath}/Titillium-Web-700/Titillium-Web-700.eot?#iefix') format('embedded-opentype'),
+    local('Titillium WebBold'),
+    local('Titillium-Web-700'),
+    url('@{siteFontPath}/Titillium-Web-700/Titillium-Web-700.woff2') format('woff2'),
+    url('@{siteFontPath}/Titillium-Web-700/Titillium-Web-700.woff') format('woff'),
+    url('@{siteFontPath}/Titillium-Web-700/Titillium-Web-700.ttf') format('truetype'),
+    url('@{siteFontPath}/Titillium-Web-700/Titillium-Web-700.svg#TitilliumWeb') format('svg');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-weight: 400;
+  font-style: normal;
+  src: url('@{siteFontPath}/Lato-regular/Lato-regular.eot');
+  src:
+    url('@{siteFontPath}/Lato-regular/Lato-regular.eot?#iefix') format('embedded-opentype'),
+    local('Lato Regular'),
+    local('Lato-regular'),
+    url('@{siteFontPath}/Lato-regular/Lato-regular.woff2') format('woff2'),
+    url('@{siteFontPath}/Lato-regular/Lato-regular.woff') format('woff'),
+    url('@{siteFontPath}/Lato-regular/Lato-regular.ttf') format('truetype'),
+    url('@{siteFontPath}/Lato-regular/Lato-regular.svg#Lato') format('svg');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-weight: 700;
+  font-style: normal;
+  src: url('@{siteFontPath}/Lato-700/Lato-700.eot');
+  src:
+    url('@{siteFontPath}/Lato-700/Lato-700.eot?#iefix') format('embedded-opentype'),
+    local('Lato Bold'),
+    local('Lato-700'),
+    url('@{siteFontPath}/Lato-700/Lato-700.woff2') format('woff2'),
+    url('@{siteFontPath}/Lato-700/Lato-700.woff') format('woff'),
+    url('@{siteFontPath}/Lato-700/Lato-700.ttf') format('truetype'),
+    url('@{siteFontPath}/Lato-700/Lato-700.svg#Lato') format('svg');
+}
