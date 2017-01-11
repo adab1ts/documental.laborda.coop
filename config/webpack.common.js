@@ -119,7 +119,7 @@ module.exports = {
       {
         test: /\.html$/,
         include: PATHS.abs.src,
-        use: ['html-loader']
+        use: ['html-loader?attrs=link:href img:src']
       }
     ]
   },
