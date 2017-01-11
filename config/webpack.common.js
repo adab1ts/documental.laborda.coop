@@ -89,7 +89,17 @@ module.exports = {
         include: [PATHS.abs.images, PATHS.abs.vendor, PATHS.abs.mods.semantic],
         use: [
           { loader: 'url-loader', options: { limit: 10 * 1000, name: `${PATHS.rel.images}/[name].[hash:8].[ext]` } },
-          { loader: 'image-webpack-loader', options: { bypassOnDebug: true, optimizationLevel: 7, progressive: true, interlaced: true } }
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true,
+              optimizationLevel: 3,
+              progressive: true,
+              interlaced: true,
+              pngquant: { quality: '20-50' },
+              mozjpeg: { quality: 65 }
+            }
+          }
         ]
       },
       {

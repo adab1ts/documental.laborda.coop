@@ -6,10 +6,34 @@
   width: 110vmin;
   height: 100vmin;
   background-color: @lightYellow;
-  background-image: url("../images/borda-background.jpg");
+  background-image: url("../images/borda-background-420x420.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+@media only screen and (min-width: 420px) {
+  .a1.outter.grid > .column:first-child {
+    background-image: url("../images/borda-background-889x889.jpg");
+  }
+}
+
+@media only screen and (min-width: 1186px) {
+  .a1.outter.grid > .column:first-child {
+    background-image: url("../images/borda-background-1240x1240.jpg");
+  }
+}
+
+@media only screen and (min-width: 2205px) {
+  .a1.outter.grid > .column:first-child {
+    background-image: url("../images/borda-background-1532x1532.jpg");
+  }
+}
+
+@media only screen and (min-width: 2724px) {
+  .a1.outter.grid > .column:first-child {
+    background-image: url("../images/borda-background-1800x1800.jpg");
+  }
 }
 
 .a1.inner.grid > .row {
