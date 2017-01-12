@@ -113,10 +113,11 @@ module.exports = {
       },
       // See: https://github.com/webpack/html-loader
       // See: https://github.com/kangax/html-minifier
+      // This works => use: [`html-loader?${JSON.stringify({ attrs: ['link:href', 'img:src', 'img:data-src'] })}`]
       {
         test: /\.html$/,
         include: PATHS.abs.src,
-        use: ['html-loader?attrs=link:href img:src']
+        use: ['html-loader?attrs=link:href img:src img:data-src']
       }
     ]
   },
