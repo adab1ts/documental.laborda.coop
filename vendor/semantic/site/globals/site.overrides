@@ -14,23 +14,9 @@
 
 @font-face {
   font-family: 'Titillium Web';
-  font-weight: 400;
-  font-style: normal;
-  src: url('@{siteFontPath}/Titillium-Web-regular/Titillium-Web-regular.eot');
-  src:
-    url('@{siteFontPath}/Titillium-Web-regular/Titillium-Web-regular.eot?#iefix') format('embedded-opentype'),
-    local('Titillium Web'),
-    local('Titillium-Web-regular'),
-    url('@{siteFontPath}/Titillium-Web-regular/Titillium-Web-regular.woff2') format('woff2'),
-    url('@{siteFontPath}/Titillium-Web-regular/Titillium-Web-regular.woff') format('woff'),
-    url('@{siteFontPath}/Titillium-Web-regular/Titillium-Web-regular.ttf') format('truetype'),
-    url('@{siteFontPath}/Titillium-Web-regular/Titillium-Web-regular.svg#TitilliumWeb') format('svg');
-}
-
-@font-face {
-  font-family: 'Titillium Web';
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
   src: url('@{siteFontPath}/Titillium-Web-700/Titillium-Web-700.eot');
   src:
     url('@{siteFontPath}/Titillium-Web-700/Titillium-Web-700.eot?#iefix') format('embedded-opentype'),
@@ -43,9 +29,42 @@
 }
 
 @font-face {
+  font-family: 'Titillium Web';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('@{siteFontPath}/Titillium-Web-regular/Titillium-Web-regular.eot');
+  src:
+    url('@{siteFontPath}/Titillium-Web-regular/Titillium-Web-regular.eot?#iefix') format('embedded-opentype'),
+    local('Titillium Web'),
+    local('Titillium-Web-regular'),
+    url('@{siteFontPath}/Titillium-Web-regular/Titillium-Web-regular.woff2') format('woff2'),
+    url('@{siteFontPath}/Titillium-Web-regular/Titillium-Web-regular.woff') format('woff'),
+    url('@{siteFontPath}/Titillium-Web-regular/Titillium-Web-regular.ttf') format('truetype'),
+    url('@{siteFontPath}/Titillium-Web-regular/Titillium-Web-regular.svg#TitilliumWeb') format('svg');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('@{siteFontPath}/Lato-700/Lato-700.eot');
+  src:
+    url('@{siteFontPath}/Lato-700/Lato-700.eot?#iefix') format('embedded-opentype'),
+    local('Lato Bold'),
+    local('Lato-700'),
+    url('@{siteFontPath}/Lato-700/Lato-700.woff2') format('woff2'),
+    url('@{siteFontPath}/Lato-700/Lato-700.woff') format('woff'),
+    url('@{siteFontPath}/Lato-700/Lato-700.ttf') format('truetype'),
+    url('@{siteFontPath}/Lato-700/Lato-700.svg#Lato') format('svg');
+}
+
+@font-face {
   font-family: 'Lato';
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
   src: url('@{siteFontPath}/Lato-regular/Lato-regular.eot');
   src:
     url('@{siteFontPath}/Lato-regular/Lato-regular.eot?#iefix') format('embedded-opentype'),
@@ -59,15 +78,16 @@
 
 @font-face {
   font-family: 'Lato';
-  font-weight: 700;
-  font-style: normal;
-  src: url('@{siteFontPath}/Lato-700/Lato-700.eot');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url('@{siteFontPath}/Lato-italic/Lato-italic.eot');
   src:
-    url('@{siteFontPath}/Lato-700/Lato-700.eot?#iefix') format('embedded-opentype'),
-    local('Lato Bold'),
-    local('Lato-700'),
-    url('@{siteFontPath}/Lato-700/Lato-700.woff2') format('woff2'),
-    url('@{siteFontPath}/Lato-700/Lato-700.woff') format('woff'),
-    url('@{siteFontPath}/Lato-700/Lato-700.ttf') format('truetype'),
-    url('@{siteFontPath}/Lato-700/Lato-700.svg#Lato') format('svg');
+    url('@{siteFontPath}/Lato-italic/Lato-italic.eot?#iefix') format('embedded-opentype'),
+    local('Lato Italic'),
+    local('Lato-italic'),
+    url('@{siteFontPath}/Lato-italic/Lato-italic.woff2') format('woff2'),
+    url('@{siteFontPath}/Lato-italic/Lato-italic.woff') format('woff'),
+    url('@{siteFontPath}/Lato-italic/Lato-italic.ttf') format('truetype'),
+    url('@{siteFontPath}/Lato-italic/Lato-italic.svg#Lato') format('svg');
 }

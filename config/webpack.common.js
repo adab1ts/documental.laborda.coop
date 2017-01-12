@@ -102,14 +102,11 @@ module.exports = {
           }
         ]
       },
+      // See: https://www.zachleat.com/web/web-font-data-uris/
+      // See: https://www.zachleat.com/web/preload/
+      // See: http://www.bramstein.com/writing/preload-hints-for-web-fonts.html
       {
-        test: /\.woff2$/,
-        include: [PATHS.abs.fonts, PATHS.abs.vendor, PATHS.abs.mods.semantic],
-        use: ['url-loader'],
-        options: { limit: 10 * 1000, mimetype: 'font/woff2', name: `${PATHS.rel.fonts}/[name].[hash:8].[ext]` }
-      },
-      {
-        test: /\.(eot|otf|ttf|svg|woff)$/,
+        test: /\.(eot|otf|ttf|svg|woff|woff2)$/,
         include: [PATHS.abs.fonts, PATHS.abs.vendor, PATHS.abs.mods.semantic],
         loader: 'file-loader',
         options: { name: `${PATHS.rel.fonts}/[name].[hash:8].[ext]` }

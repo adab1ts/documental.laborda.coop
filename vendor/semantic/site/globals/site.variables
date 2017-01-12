@@ -18,8 +18,8 @@
        Fonts
 --------------------*/
 
-@headerFont        : 'Titillium Web', sans-serif;
-@pageFont          : 'Lato', sans-serif;
+@headerFont        : 'Titillium Web', Verdana, Geneva, sans-serif;
+@pageFont          : 'Lato', Arial, 'Helvetica Neue', Helvetica, sans-serif;
 
 @importGoogleFonts : false;
 
