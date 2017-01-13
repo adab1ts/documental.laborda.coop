@@ -7,6 +7,11 @@
   top: 10px;
   left: 10px;
   z-index: 100;
+  background-color: @brandColor;
+}
+
+.a1.nav-btn i.icon {
+  margin: 0;
 }
 
 .a1.nav-links {
@@ -14,4 +19,15 @@
   top: 10px;
   right: 20px;
   z-index: 100;
+}
+
+@media only screen and (orientation: landscape) {
+  .a1.nav-links {
+    .ui.horizontal.list > .item:last-child {
+      padding-left: 0.21428571em !important;
+      padding-right: 0.21428571em;
+      border-radius: 5px;
+      background-color: rgba(255, 249, 219, 0.7);
+    }
+  }
 }
