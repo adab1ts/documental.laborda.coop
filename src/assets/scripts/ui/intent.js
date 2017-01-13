@@ -21,6 +21,13 @@ export const intent = {
       })
       .modal('attach events', '.a1.cookies.item', 'show')
 
+    const $legalModal = $('.a1.legal.modal')
+    $legalModal
+      .modal({
+        transition: 'fade down'
+      })
+      .modal('attach events', '.a1.legal.item', 'show')
+
     const $creditsModal = $('.a1.credits.modal')
     $creditsModal
       .modal({
