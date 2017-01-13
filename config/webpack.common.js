@@ -42,6 +42,7 @@ module.exports = {
       images: PATHS.abs.images,
       scripts: PATHS.abs.scripts,
       styles: PATHS.abs.styles,
+      vendor: PATHS.abs.vendor,
       jquery: 'jquery/src/jquery'
     }
   },
