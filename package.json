@@ -62,6 +62,7 @@
     "postcss-discard-comments": "^2.0.4",
     "postcss-loader": "1.2.1",
     "progress-bar-webpack-plugin": "1.9.1",
+    "purifycss-webpack-plugin": "2.0.3",
     "rimraf": "^2.5.4",
     "snazzy": "^5.0.0",
     "standard": "^8.0.0",

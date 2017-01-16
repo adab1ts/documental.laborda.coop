@@ -10,6 +10,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin')
 const MinChunkSizePlugin = require('webpack/lib/optimize/MinChunkSizePlugin')
 const NoErrorsPlugin = require('webpack/lib/NoErrorsPlugin')
+const PurifyCSSPlugin = require('purifycss-webpack-plugin')
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin')
 
 /*
@@ -90,6 +91,15 @@ module.exports = {
     // See: https://webpack.js.org/guides/migrating/#extracttextwebpackplugin-breaking-change
     new ExtractTextPlugin({
       filename: `${PATHS.rel.styles}/[name].[contenthash:8].css`
+    }),
+
+    // See: https://github.com/webpack-contrib/purifycss-webpack-plugin
+    // See: https://github.com/purifycss/purifycss
+    // See: http://survivejs.com/webpack/handling-styles/eliminating-unused-css/
+    new PurifyCSSPlugin({
+      resolveExtensions: ['.html', '.js'],
+      paths: [`${PATHS.abs.src}/*`],
+      purifyOptions: { info: true }
     }),
 
     // See: https://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
