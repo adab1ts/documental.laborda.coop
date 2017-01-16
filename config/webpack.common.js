@@ -89,7 +89,7 @@ module.exports = {
         test: /\.(png|svg|ico)$/i,
         include: [`${PATHS.abs.images}/favicons`],
         use: [
-          { loader: 'file-loader', options: { name: `${PATHS.rel.images}/favicons/[name].[ext]` } },
+          { loader: 'file-loader', options: { name: `${PATHS.rel.images}/[name].[ext]` } },
           {
             loader: 'image-webpack-loader',
             options: {
