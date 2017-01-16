@@ -86,8 +86,24 @@ module.exports = {
       // See: https://github.com/kavu/webp-loader
       // See: https://developers.google.com/speed/webp/
       {
+        test: /\.(png|svg|ico)$/i,
+        include: [`${PATHS.abs.images}/favicons`],
+        use: [
+          { loader: 'file-loader', options: { name: `${PATHS.rel.images}/favicons/[name].[ext]` } },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true,
+              optimizationLevel: 3,
+              pngquant: { quality: '20-50' }
+            }
+          }
+        ]
+      },
+      {
         test: /\.(png|jpe?g|gif|svg)$/i,
         include: [PATHS.abs.images, PATHS.abs.vendor, PATHS.abs.mods.semantic],
+        exclude: [`${PATHS.abs.images}/favicons`],
         use: [
           { loader: 'url-loader', options: { limit: 10 * 1000, name: `${PATHS.rel.images}/[name].[hash:8].[ext]` } },
           {
