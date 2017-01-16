@@ -99,7 +99,7 @@ module.exports = {
     new PurifyCSSPlugin({
       resolveExtensions: ['.html', '.js'],
       paths: [`${PATHS.abs.src}/*`],
-      purifyOptions: { info: true }
+      purifyOptions: { minify: true, info: true }
     }),
 
     // See: https://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
