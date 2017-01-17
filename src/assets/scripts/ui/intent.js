@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import Hammer from 'hammerjs'
 
 export const intent = {
   setup () {
@@ -12,6 +13,9 @@ export const intent = {
       .sidebar('attach events', '.pusher .content.icon')
       .sidebar('attach events', '.ui.sidebar .remove.icon')
       .sidebar('attach events', '.a1.plus.cell')
+
+    const gestObserver = new Hammer($sidebar[0])
+    gestObserver.on('swipeleft', () => $sidebar.sidebar('hide'))
 
     // Text Modals
     const $cookiesModal = $('.a1.cookies.modal')

@@ -61,6 +61,12 @@ module.exports = {
         include: PATHS.abs.src,
         use: ['babel-loader']
       },
+      // See: https://github.com/webpack/exports-loader
+      // See: https://egghead.io/lessons/tools-import-a-non-es6-module-with-webpack
+      {
+        test: require.resolve('hammerjs/hammer'),
+        use: ['exports-loader?Hammer']
+      },
       // See: https://github.com/webpack/css-loader
       // See: https://github.com/postcss/postcss-loader
       {
