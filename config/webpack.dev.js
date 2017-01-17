@@ -6,6 +6,7 @@ const {PATHS} = require('./variables')
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin')
 const DefinePlugin = require('webpack/lib/DefinePlugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin')
 
 /*
@@ -71,17 +72,25 @@ module.exports = {
       }
     }),
 
-    // See: http://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
+    // See: https://blog.madewithlove.be/post/webpack-your-bags/
+    // See: https://egghead.io/courses/using-webpack-for-production-javascript-applications
+    // See: https://github.com/webpack/docs/wiki/code-splitting
+    // See: https://github.com/webpack/webpack/tree/master/examples/multiple-commons-chunks
+    // See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
+    // See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
     new CommonsChunkPlugin({
-      minChunks: Infinity,
-      name: 'common',
-      filename: `${PATHS.rel.scripts}/common.bundle.js`
+      name: ['common', 'vendor', 'main'].reverse()
     }),
 
     // See: https://github.com/webpack/extract-text-webpack-plugin
     // See: https://webpack.js.org/guides/migrating/#extracttextwebpackplugin-breaking-change
     new ExtractTextPlugin({
       filename: `${PATHS.rel.styles}/[name].bundle.css`
+    }),
+
+    // See: https://github.com/ampedandwired/html-webpack-plugin
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
     })
   ]
 

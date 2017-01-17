@@ -3,9 +3,7 @@ const {PATHS} = require('./variables')
 /*
  * Webpack Plugins
  */
-const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const ProvidePlugin = require('webpack/lib/ProvidePlugin')
 
@@ -157,21 +155,6 @@ module.exports = {
     new ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'
-    }),
-
-    // See: https://blog.madewithlove.be/post/webpack-your-bags/
-    // See: https://egghead.io/courses/using-webpack-for-production-javascript-applications
-    // See: https://github.com/webpack/docs/wiki/code-splitting
-    // See: https://github.com/webpack/webpack/tree/master/examples/multiple-commons-chunks
-    // See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
-    // See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
-    new CommonsChunkPlugin({
-      name: ['vendor', 'main'].reverse()
-    }),
-
-    // See: https://github.com/ampedandwired/html-webpack-plugin
-    new HtmlWebpackPlugin({
-      template: 'src/index.html'
     })
   ]
 }

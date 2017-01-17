@@ -7,6 +7,7 @@ const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const DefinePlugin = require('webpack/lib/DefinePlugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin')
 const MinChunkSizePlugin = require('webpack/lib/optimize/MinChunkSizePlugin')
 const NoErrorsPlugin = require('webpack/lib/NoErrorsPlugin')
@@ -75,11 +76,14 @@ module.exports = {
     // See: http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
     new NoErrorsPlugin(),
 
+    // See: https://blog.madewithlove.be/post/webpack-your-bags/
+    // See: https://egghead.io/courses/using-webpack-for-production-javascript-applications
+    // See: https://github.com/webpack/docs/wiki/code-splitting
+    // See: https://github.com/webpack/webpack/tree/master/examples/multiple-commons-chunks
+    // See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
     // See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
     new CommonsChunkPlugin({
-      minChunks: Infinity,
-      name: 'common',
-      filename: `${PATHS.rel.scripts}/common.[chunkhash:8].js`
+      name: ['common', 'vendor', 'main'].reverse()
     }),
 
     // See: http://webpack.github.io/docs/list-of-plugins.html#minchunksizeplugin
@@ -110,6 +114,11 @@ module.exports = {
       sourceMap: true,
       beautify: false,
       comments: false
+    }),
+
+    // See: https://github.com/ampedandwired/html-webpack-plugin
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
     }),
 
     // See: https://github.com/webpack/compression-webpack-plugin
