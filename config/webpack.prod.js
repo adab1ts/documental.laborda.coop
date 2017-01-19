@@ -123,7 +123,7 @@ module.exports = {
 
     // See: https://github.com/webpack/compression-webpack-plugin
     new CompressionPlugin({
-      test: /\.css$|\.html$|\.js$|\.json$/
+      test: /\.css$|\.html$|\.ico$|\.js$|\.json$/
     })
   ]
 }
