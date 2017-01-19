@@ -8,6 +8,7 @@ const PATHS = {
     src: helpers.root('src'),
     dist: helpers.root('dist'),
     fonts: helpers.root('src', 'assets', 'fonts'),
+    icons: helpers.root('src', 'assets', 'icons'),
     images: helpers.root('src', 'assets', 'images'),
     scripts: helpers.root('src', 'assets', 'scripts'),
     styles: helpers.root('src', 'assets', 'styles'),
@@ -19,6 +20,7 @@ const PATHS = {
   },
   rel: {
     fonts: 'assets/fonts',
+    icons: 'assets/icons',
     images: 'assets/images',
     scripts: 'assets/scripts',
     styles: 'assets/styles'

@@ -91,9 +91,9 @@ module.exports = {
       // See: https://developers.google.com/speed/webp/
       {
         test: /\.(png|svg|ico)$/i,
-        include: [`${PATHS.abs.images}/favicons`],
+        include: [PATHS.abs.icons],
         use: [
-          { loader: 'file-loader', options: { name: `${PATHS.rel.images}/[name].[ext]` } },
+          { loader: 'file-loader', options: { name: `${PATHS.rel.icons}/[name].[ext]` } },
           {
             loader: 'image-webpack-loader',
             options: {
@@ -107,7 +107,6 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         include: [PATHS.abs.images, PATHS.abs.vendor, PATHS.abs.mods.semantic],
-        exclude: [`${PATHS.abs.images}/favicons`],
         use: [
           { loader: 'url-loader', options: { limit: 10 * 1000, name: `${PATHS.rel.images}/[name].[hash:8].[ext]` } },
           {
