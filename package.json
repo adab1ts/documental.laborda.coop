@@ -21,7 +21,7 @@
     "clean": "rimraf dist",
     "clean:all": "rimraf dist node_modules",
     "lint:scripts": "snazzy --verbose",
-    "lint:styles": "stylelint 'src/**/*.css' 'vendor/**/*.less' 'vendor/**/*.variables' 'vendor/**/*.overrides' -q",
+    "lint:styles": "stylelint 'src/**/*.less' 'vendor/**/*.less' 'vendor/**/*.variables' 'vendor/**/*.overrides' -q",
     "lint": "run-p lint:*",
     "icons": "cpy src/assets/icons/* dist/assets/icons",
     "imgs:twcard": "cpy src/assets/borda-twitter-card.jpg dist/assets",
