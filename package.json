@@ -30,7 +30,7 @@
     "serve:dev": "lite-server -c config/lite-server.js",
     "dev": "run-p build:dev serve:dev",
     "headers:prod": "cpy src/_headers dist",
-    "prebuild:prod": "run-s clean lint icons imgs:twcard",
+    "prebuild:prod": "run-s clean lint icons imgs:twcard headers:prod",
     "build:prod": "webpack --display-modules --display-chunks --bail --env.prod",
     "preprod": "npm run build:prod",
     "prod": "http-server dist -g --cors",
