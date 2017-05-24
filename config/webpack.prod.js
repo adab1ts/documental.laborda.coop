@@ -1,5 +1,5 @@
 const {PATHS} = require('./variables')
-const glob = require('glob')
+// const glob = require('glob')
 
 /*
  * Webpack Plugins
@@ -12,7 +12,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin')
 const MinChunkSizePlugin = require('webpack/lib/optimize/MinChunkSizePlugin')
 const NoErrorsPlugin = require('webpack/lib/NoErrorsPlugin')
-const PurifyCSSPlugin = require('purifycss-webpack')
+// const PurifyCSSPlugin = require('purifycss-webpack')
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin')
 
 /*
@@ -102,11 +102,13 @@ module.exports = {
     // See: https://github.com/webpack-contrib/purifycss-webpack/blob/master/examples/webpack.config.js
     // See: https://github.com/purifycss/purifycss
     // See: http://survivejs.com/webpack/handling-styles/eliminating-unused-css/
+    /*
     new PurifyCSSPlugin({
       verbose: true,
       minimize: true,
       paths: glob.sync(`${PATHS.abs.src}/*`)
     }),
+    */
 
     // See: https://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
     // See: https://webpack.js.org/guides/migrating/#uglifyjsplugin-sourcemap
