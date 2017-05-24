@@ -41,13 +41,14 @@ export const intent = {
 
     // Video Modals
     const videoModals = [
-      { selector: '.a1.v1.modal', triggers: ['.ui.link.items .a1.v1.item', '.a1.v1.floor.cell'] },
+      { selector: '.a1.v1.modal', triggers: ['.ui.link.items .a1.v1.item'] },
       { selector: '.a1.e11.modal', triggers: ['.ui.link.items .a1.e11.item'] },
       { selector: '.a1.e12.modal', triggers: ['.ui.link.items .a1.e12.item'] },
       { selector: '.a1.v2.modal', triggers: ['.ui.link.items .a1.v2.item', '.a1.v2.floor.cell'] },
       { selector: '.a1.v3.modal', triggers: ['.ui.link.items .a1.v3.item', '.a1.v3.floor.cell'] },
       { selector: '.a1.e2.modal', triggers: ['.ui.link.items .a1.e2.item'] },
-      { selector: '.a1.e3.modal', triggers: ['.ui.link.items .a1.e3.item'] }
+      { selector: '.a1.e3.modal', triggers: ['.ui.link.items .a1.e3.item'] },
+      { selector: '.a1.v4.modal', triggers: ['.ui.link.items .a1.v4.item', '.a1.v4.floor.cell'] }
     ]
 
     const setupVideoModal = (modal) => {
