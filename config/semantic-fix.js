@@ -13,15 +13,20 @@ fs.writeFileSync(
 )
 
 // fix well known bug with default distribution
-fixFontPath(helpers.root('node_modules', 'semantic-ui-less', 'themes', 'default', 'globals', 'site.variables'))
-fixFontPath(helpers.root('node_modules', 'semantic-ui-less', 'themes', 'flat', 'globals', 'site.variables'))
-fixFontPath(helpers.root('node_modules', 'semantic-ui-less', 'themes', 'material', 'globals', 'site.variables'))
+fixPaths(helpers.root('node_modules', 'semantic-ui-less', 'themes', 'default', 'globals', 'site.variables'))
+fixPaths(helpers.root('node_modules', 'semantic-ui-less', 'themes', 'flat', 'globals', 'site.variables'))
+fixPaths(helpers.root('node_modules', 'semantic-ui-less', 'themes', 'material', 'globals', 'site.variables'))
 
-function fixFontPath (filename) {
+function fixPaths (filename) {
   var content = fs.readFileSync(filename, 'utf8')
-  var newContent = content.replace(
-    "@fontPath  : '../../themes/",
-    "@fontPath  : '../../../themes/"
-  )
+  var newContent = content
+    .replace(
+      "@imagePath : '../../themes/",
+      "@imagePath : '../../../themes/"
+    )
+    .replace(
+      "@fontPath  : '../../themes/",
+      "@fontPath  : '../../../themes/"
+    )
   fs.writeFileSync(filename, newContent, 'utf8')
 }
