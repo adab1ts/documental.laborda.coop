@@ -59,7 +59,7 @@ module.exports = {
         // - https://github.com/hail2u/node-css-mqpacker
         // - https://github.com/ben-eb/postcss-discard-comments
         postcss: [
-          require('autoprefixer')({ browsers: ['defaults', 'ie 9'] })
+          require('autoprefixer')()
         ]
       }
     }),

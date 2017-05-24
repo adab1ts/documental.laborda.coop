@@ -1,4 +1,5 @@
 const {PATHS} = require('./variables')
+const glob = require('glob')
 
 /*
  * Webpack Plugins
@@ -11,7 +12,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin')
 const MinChunkSizePlugin = require('webpack/lib/optimize/MinChunkSizePlugin')
 const NoErrorsPlugin = require('webpack/lib/NoErrorsPlugin')
-const PurifyCSSPlugin = require('purifycss-webpack-plugin')
+const PurifyCSSPlugin = require('purifycss-webpack')
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin')
 
 /*
@@ -59,7 +60,7 @@ module.exports = {
       quiet: true,
       options: {
         postcss: [
-          require('autoprefixer')({ browsers: ['defaults', 'ie 9'] }),
+          require('autoprefixer')(),
           require('postcss-discard-comments')({removeAll: true})
         ]
       }
@@ -97,13 +98,14 @@ module.exports = {
       filename: `${PATHS.rel.styles}/[name].[contenthash:8].css`
     }),
 
-    // See: https://github.com/webpack-contrib/purifycss-webpack-plugin
+    // See: https://github.com/webpack-contrib/purifycss-webpack
+    // See: https://github.com/webpack-contrib/purifycss-webpack/blob/master/examples/webpack.config.js
     // See: https://github.com/purifycss/purifycss
     // See: http://survivejs.com/webpack/handling-styles/eliminating-unused-css/
     new PurifyCSSPlugin({
-      resolveExtensions: ['.html', '.js'],
-      paths: [`${PATHS.abs.src}/*`],
-      purifyOptions: { minify: true, info: true }
+      verbose: true,
+      minimize: true,
+      paths: glob.sync(`${PATHS.abs.src}/*`)
     }),
 
     // See: https://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
