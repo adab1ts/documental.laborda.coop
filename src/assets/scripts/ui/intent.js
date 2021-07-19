@@ -53,6 +53,7 @@ export const intent = {
       { selector: '.a1.e42.modal', triggers: ['.ui.link.items .a1.e42.item'] },
       { selector: '.a1.e51.modal', triggers: ['.ui.link.items .a1.e51.item'] },
       { selector: '.a1.e52.modal', triggers: ['.ui.link.items .a1.e52.item'] },
+      { selector: '.a1.v5.modal', triggers: ['.ui.link.items .a1.v5.item', '.a1.v5.wall.cell'] }
     ]
 
     const setupVideoModal = (modal) => {
