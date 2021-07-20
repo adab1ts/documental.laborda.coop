@@ -11,13 +11,11 @@
 --------------------*/
 
 .ui.sidebar {
-
   .ui.items > .item {
     .a1.tags {
       margin-top: 0.5em;
     }
   }
-
 }
 
 /*-------------------
@@ -63,7 +61,6 @@
 }
 
 .a1.inner.grid {
-
   .a1.cell {
     padding: 0;
     height: ~"calc(98vmin / 8)";
@@ -153,5 +150,11 @@
   .a1.outter.grid > .column:last-child {
     width: ~"calc(100% - 110vmin)";
     /* min-width: 50em; */
+  }
+}
+
+@media only screen and (min-width: 1186px) {
+  .a1.outter.grid > .column:last-child {
+    max-height: 100%;
   }
 }
